@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const Book = ({book}) => {
     console.log(book);
-   const {image,title,subtitle,price}=book;
+   const {image,title,subtitle,price,isbn13}=book;
   return (
     <div>
           <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
@@ -21,7 +21,7 @@ export const Book = ({book}) => {
               </p>
               <div className="flex items-center justify-center space-x-3">
                 <NavLink
-                  to="/"
+                  to={`../books/${isbn13}`}
                   className=" font-bold text-2xl text-teal-600 transition-colors duration-300 hover:text-teal-300"
                 >
                   Download Now
