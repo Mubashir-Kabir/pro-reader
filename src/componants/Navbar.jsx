@@ -121,7 +121,7 @@ export const Navbar = () => {
             </svg>
           </button>
           {isMenuOpen && (
-            <div className="absolute top-0 left-0 w-full">
+            <div className="absolute z-10 top-0 left-0 w-full">
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -147,7 +147,7 @@ export const Navbar = () => {
                         <rect x="14" y="11" width="7" height="12" />
                       </svg>
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        Company
+                        Pro-Reader
                       </span>
                     </a>
                   </div>
@@ -170,51 +170,51 @@ export const Navbar = () => {
                 <nav>
                   <ul className="space-y-4">
                     <li>
-                      <a
-                        href="/"
+                      <NavLink
+                        to="/home"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
                       >
-                        Product
-                      </a>
+                        Home
+                      </NavLink>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <NavLink
+                        to="/books"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
                       >
-                        Features
-                      </a>
+                        Books
+                      </NavLink>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <NavLink
+                        to="/about"
                         aria-label="Product pricing"
                         title="Product pricing"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
                       >
-                        Pricing
-                      </a>
+                        About
+                      </NavLink>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <NavLink
+                        to="/contact"
                         aria-label="About us"
                         title="About us"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
                       >
-                        About us
-                      </a>
+                        Contact
+                      </NavLink>
                     </li>
                     <li>
                       <a
                         href="/"
                         aria-label="Sign in"
                         title="Sign in"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-gray-100 hover:bg-purple-800 hover:text-white focus:shadow-outline focus:outline-none"
                       >
                         Sign in
                       </a>
