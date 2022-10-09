@@ -25,13 +25,13 @@ export const LandingPageCard = () => {
             <NavLink to='/books' className="inline-flex items-center justify-center  h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 mr-4 focus:shadow-outline focus:outline-none">
                 Visit Books
             </NavLink>
-            <a
-              href="/"
+            <NavLink
+              to="/about"
               aria-label=""
               className="inline-flex items-center font-semibold transition-colors duration-200 text-purple-400 hover:text-purple-800"
             >
               Learn more..
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

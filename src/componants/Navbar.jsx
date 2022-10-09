@@ -5,7 +5,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="px-4 py-3 mx-auto  bg-gray-100 sm:max-w-xl md:max-w-full  md:px-24 lg:px-8">
+    <div className="px-4 py-4 mx-auto  bg-gray-100 sm:max-w-xl md:max-w-full  md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         <div className="flex items-center">
           <NavLink
@@ -39,7 +39,7 @@ export const Navbar = () => {
                 to="/home"
                 aria-label="Our product"
                 title="Home"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
               >
                 Home
               </NavLink>
@@ -49,7 +49,7 @@ export const Navbar = () => {
                 to="/books"
                 aria-label="Our product"
                 title="Download Books"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
               >
                 Books
               </NavLink>
@@ -59,7 +59,7 @@ export const Navbar = () => {
                 to="/about"
                 aria-label="Product pricing"
                 title="About Us"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
               >
                 About
               </NavLink>
@@ -69,7 +69,7 @@ export const Navbar = () => {
                 to="/contact"
                 aria-label="About us"
                 title="Contact Us"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
               >
                 Contact
               </NavLink>
@@ -174,7 +174,7 @@ export const Navbar = () => {
                         to="/home"
                         aria-label="Our product"
                         title="Our product"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
                       >
                         Home
                       </NavLink>
@@ -184,7 +184,7 @@ export const Navbar = () => {
                         to="/books"
                         aria-label="Our product"
                         title="Our product"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
                       >
                         Books
                       </NavLink>
@@ -194,7 +194,7 @@ export const Navbar = () => {
                         to="/about"
                         aria-label="Product pricing"
                         title="Product pricing"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
                       >
                         About
                       </NavLink>
@@ -204,7 +204,7 @@ export const Navbar = () => {
                         to="/contact"
                         aria-label="About us"
                         title="About us"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
                       >
                         Contact
                       </NavLink>

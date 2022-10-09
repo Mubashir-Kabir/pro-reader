@@ -4,11 +4,14 @@ import Books from "../pages/Books";
 import About from "../pages/About";
 import Root from "../root";
 import { BookDetails } from "../componants/BookDetails";
+import Contact from "../pages/Contact";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
       },
       {
         path: "books/:id",
