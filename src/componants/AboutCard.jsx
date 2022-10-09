@@ -29,17 +29,16 @@ export const AboutCard = () => {
             </svg>
             <span className="relative">The</span>
           </span>{' '}
-          quick, brown fox jumps over a lazy dog
+          A reader lives a thousand lives before he dies
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque rem aperiam, eaque ipsa quae.
+          Books are a uniquely portable magic. Books serve to show a man that those original thoughts of his aren't very new after all. The man who does not read good books is no better than the man who can't.
         </p>
       </div>
       <div className="grid gap-8 row-gap-5 mb-8 md:row-gap-8 lg:grid-cols-4 sm:grid-cols-2">
         <div className="duration-300 transform bg-white border-l-4 border-purple-600 hover:-translate-y-2">
           <div className="h-full p-5 border border-l-0 rounded-r shadow-sm">
-            <h6 className="mb-2 font-semibold leading-5">The doctor said</h6>
+            <h6 className="mb-2 font-semibold leading-5">Books are a uniquely portable magic.</h6>
             <p className="text-sm text-gray-900">
               Sportacus andrew weatherall goose Refined gentlemen super mario
               des lynam alpha trion zap rowsdower.
