@@ -1,8 +1,24 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/UserContext";
+import app from "../Utilities/auth";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useContext(AuthContext);
+  const auth = getAuth(app);
+
+  const logOut = (event) => {
+    event.preventDefault();
+    signOut(auth)
+      .then(() => {
+        //loging out
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className="px-4 py-4 mx-auto  bg-gray-100 sm:max-w-xl md:max-w-full  md:px-24 lg:px-8">
@@ -33,13 +49,17 @@ export const Navbar = () => {
               Pro-Reader
             </span>
           </NavLink>
-          <ul className="flex items-center hidden space-x-8 lg:flex">
+          <ul className=" items-center hidden space-x-8 lg:flex">
             <li>
               <NavLink
                 to="/home"
                 aria-label="Our product"
                 title="Home"
-                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-purple-600"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                }
               >
                 Home
               </NavLink>
@@ -49,7 +69,11 @@ export const Navbar = () => {
                 to="/books"
                 aria-label="Our product"
                 title="Download Books"
-                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-purple-600"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                }
               >
                 Books
               </NavLink>
@@ -59,7 +83,11 @@ export const Navbar = () => {
                 to="/about"
                 aria-label="Product pricing"
                 title="About Us"
-                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-purple-600"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                }
               >
                 About
               </NavLink>
@@ -69,35 +97,58 @@ export const Navbar = () => {
                 to="/contact"
                 aria-label="About us"
                 title="Contact Us"
-                className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-purple-600"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                }
               >
                 Contact
               </NavLink>
             </li>
           </ul>
         </div>
-        <ul className="flex items-center hidden space-x-8 lg:flex">
-          <li>
-            <NavLink
-              to="/sign-in"
-              aria-label="Sign in"
-              title="Sign in"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+        {user?.uid ? (
+          <div className="flex gap-2">
+            <button
+              onClick={logOut}
+              className="hover:text-purple-600 hidden md:block"
             >
-              Sign in
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/sign-up"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 focus:shadow-outline focus:outline-none"
-              aria-label="Sign up"
-              title="Sign up"
-            >
-              Sign up
-            </NavLink>
-          </li>
-        </ul>
+              Log Out
+            </button>
+            <div className="relative flex-shrink-0">
+              <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-600 border rounded-full text-gray-800 border-gray-50"></span>
+              <img
+                src={user.photoURL}
+                alt=""
+                className="w-12 h-12 border rounded-full bg-gray-500 border-gray-300"
+              />
+            </div>
+          </div>
+        ) : (
+          <ul className=" items-center hidden space-x-8 lg:flex">
+            <li>
+              <Link
+                to="/sign-in"
+                aria-label="Sign in"
+                title="Sign in"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+              >
+                Sign in
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/sign-up"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 focus:shadow-outline focus:outline-none"
+                aria-label="Sign up"
+                title="Sign up"
+              >
+                Sign up
+              </Link>
+            </li>
+          </ul>
+        )}
         <div className="lg:hidden">
           <button
             aria-label="Open Menu"
@@ -174,7 +225,11 @@ export const Navbar = () => {
                         to="/home"
                         aria-label="Our product"
                         title="Our product"
-                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium tracking-wide text-purple-600"
+                            : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        }
                       >
                         Home
                       </NavLink>
@@ -184,7 +239,11 @@ export const Navbar = () => {
                         to="/books"
                         aria-label="Our product"
                         title="Our product"
-                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium tracking-wide text-purple-600"
+                            : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        }
                       >
                         Books
                       </NavLink>
@@ -194,7 +253,11 @@ export const Navbar = () => {
                         to="/about"
                         aria-label="Product pricing"
                         title="Product pricing"
-                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium tracking-wide text-purple-600"
+                            : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        }
                       >
                         About
                       </NavLink>
@@ -204,31 +267,50 @@ export const Navbar = () => {
                         to="/contact"
                         aria-label="About us"
                         title="About us"
-                        className={({isActive})=>isActive?"font-medium tracking-wide text-purple-600":"font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium tracking-wide text-purple-600"
+                            : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-600"
+                        }
                       >
                         Contact
                       </NavLink>
                     </li>
-                    <li>
-                      <a
-                        href="/"
-                        aria-label="Sign in"
-                        title="Sign in"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-gray-100 hover:bg-purple-800 hover:text-white focus:shadow-outline focus:outline-none"
-                      >
-                        Sign in
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 focus:shadow-outline focus:outline-none"
-                        aria-label="Sign up"
-                        title="Sign up"
-                      >
-                        Sign up
-                      </a>
-                    </li>
+                    {user?.uid ? (
+                      <li>
+                        <button
+                          onClick={logOut}
+                          aria-label="Sign in"
+                          title="Sign in"
+                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 focus:shadow-outline focus:outline-none"
+                        >
+                          Log Out
+                        </button>
+                      </li>
+                    ) : (
+                      <>
+                        <li>
+                          <Link
+                            to="/sign-in"
+                            aria-label="Sign in"
+                            title="Sign in"
+                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-gray-100 hover:bg-purple-800 hover:text-white focus:shadow-outline focus:outline-none"
+                          >
+                            Sign in
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="sign-up"
+                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-800 focus:shadow-outline focus:outline-none"
+                            aria-label="Sign up"
+                            title="Sign up"
+                          >
+                            Sign up
+                          </Link>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </nav>
               </div>
@@ -239,3 +321,7 @@ export const Navbar = () => {
     </div>
   );
 };
+
+{
+  /* ; */
+}

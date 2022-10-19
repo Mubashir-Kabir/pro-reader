@@ -6,6 +6,9 @@ import Root from "../root";
 import { BookDetails } from "../componants/BookDetails";
 import Contact from "../pages/Contact";
 import Error from "../pages/Error";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,11 @@ const router = createBrowserRouter([
       {
         path: "books",
         loader: () => fetch("https://api.itbook.store/1.0/new"),
-        element: <Books></Books>,
+        element: (
+          <PrivateRoute>
+            <Books></Books>
+          </PrivateRoute>
+        ),
       },
       {
         path: "about",
@@ -33,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "sign-in",
+        element: <SignIn></SignIn>,
+      },
+      {
+        path: "sign-up",
+        element: <SignUp></SignUp>,
       },
       {
         path: "books/:id",
